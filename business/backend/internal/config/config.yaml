@@ -1,0 +1,21 @@
+server:
+  env: dev
+  http:
+    port: 9090
+log:
+  path: ./log/duanurl_business_backend
+  maxSize: 10
+  maxBackups: 7
+  maxAge: 7
+localCache:
+  memory: 30720
+  expire: 180
+redis:
+  single:
+    host: 127.0.0.1:6379
+database:
+  mysql:
+    host: 127.0.0.1
+    port: 3306
+    username: dev
+    password: 123456
