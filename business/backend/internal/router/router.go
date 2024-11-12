@@ -21,7 +21,9 @@ func NewRouter(
 	router := gin.Default()
 	router.Use(gin.Logger(), gin.Recovery())
 
-	apiGroup := router.Group("/api")
+	router.LoadHTMLGlob("templates/*")
+
+	apiGroup := router.Group("")
 
 	initShortRouter(apiGroup, shortHandler)
 

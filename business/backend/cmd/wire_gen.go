@@ -27,7 +27,11 @@ func wireServer() (*server.Server, func(), error) {
 	if err != nil {
 		return nil, nil, err
 	}
-	db := repo.NewDB(configConfig)
+	db, cleanup2, err := repo.NewDB(configConfig)
+	if err != nil {
+		cleanup()
+		return nil, nil, err
+	}
 	repoShortUrl := repo.NewRepoShortUrl(db)
 	svcShort := service.NewSvcShort(logger, iRedis, repoShortUrl)
 	shortHandler := handler.NewShortHandler(svcShort)
@@ -35,6 +39,7 @@ func wireServer() (*server.Server, func(), error) {
 	httpServer := server.NewHttpServer(configConfig, engine)
 	serverServer := server.NewServer(configConfig, logger, httpServer)
 	return serverServer, func() {
+		cleanup2()
 		cleanup()
 	}, nil
 }

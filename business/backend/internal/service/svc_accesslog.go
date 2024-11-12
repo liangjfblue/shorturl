@@ -11,10 +11,10 @@ import (
 
 type SvcAccessLog struct {
 	log           *logger.Logger
-	repoAccessLog *repo.Repo[model.AccessLog]
+	repoAccessLog *repo.RepoAccessLog
 }
 
-func NewSvcAccessLog(log *logger.Logger, repoAccessLog *repo.Repo[model.AccessLog]) *SvcAccessLog {
+func NewSvcAccessLog(log *logger.Logger, repoAccessLog *repo.RepoAccessLog) *SvcAccessLog {
 	return &SvcAccessLog{
 		log:           log,
 		repoAccessLog: repoAccessLog,

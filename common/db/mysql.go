@@ -20,7 +20,7 @@ func NewMysql(url string) *Mysql {
 	return m
 }
 
-func (m Mysql) initDB(url string) (err error) {
+func (m *Mysql) initDB(url string) (err error) {
 	m.client, err = gorm.Open(mysql.Open(url), &gorm.Config{})
 	return
 }
@@ -57,4 +57,12 @@ func (m Mysql) List(
 
 func (m Mysql) Delete(ctx context.Context, tb string, filter map[string]any) (err error) {
 	return m.client.WithContext(ctx).Table(tb).Where(filter).Delete(nil).Error
+}
+
+func (m Mysql) Close() error {
+	db, err := m.client.DB()
+	if err != nil {
+		return err
+	}
+	return db.Close()
 }

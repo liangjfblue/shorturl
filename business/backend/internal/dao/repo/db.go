@@ -5,9 +5,12 @@ import (
 	"common/db"
 )
 
-func NewDB(c *config.Config) db.DB {
+func NewDB(c *config.Config) (db.DB, func(), error) {
+	var d db.DB
 	if len(c.Database.Mysql.Host) > 0 {
-		return db.NewMysql(c.Database.Mysql.Host)
+		d = db.NewMysql(c.Database.Mysql.Host)
+	} else {
+		d = db.NewMgo(c.Database.Mongodb.Host, c.Database.Mongodb.DBName)
 	}
-	return db.NewMgo(c.Database.Mongo.Host, c.Database.Mongo.DBName)
+	return d, func() { _ = d.Close() }, nil
 }

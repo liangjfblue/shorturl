@@ -3,15 +3,18 @@ module backend
 go 1.22
 
 require (
+	github.com/coocood/freecache v1.2.4
 	github.com/gin-gonic/gin v1.10.0
 	github.com/google/wire v0.6.0
 	github.com/pkg/errors v0.9.1
 	github.com/spf13/viper v1.19.0
+	golang.org/x/net v0.25.0
 )
 
 require (
 	github.com/bytedance/sonic v1.11.6 // indirect
 	github.com/bytedance/sonic/loader v0.1.1 // indirect
+	github.com/cespare/xxhash/v2 v2.1.2 // indirect
 	github.com/cloudwego/base64x v0.1.4 // indirect
 	github.com/cloudwego/iasm v0.2.0 // indirect
 	github.com/fsnotify/fsnotify v1.7.0 // indirect
@@ -45,7 +48,6 @@ require (
 	golang.org/x/arch v0.8.0 // indirect
 	golang.org/x/crypto v0.23.0 // indirect
 	golang.org/x/exp v0.0.0-20230905200255-921286631fa9 // indirect
-	golang.org/x/net v0.25.0 // indirect
 	golang.org/x/sys v0.20.0 // indirect
 	golang.org/x/text v0.15.0 // indirect
 	google.golang.org/protobuf v1.34.1 // indirect

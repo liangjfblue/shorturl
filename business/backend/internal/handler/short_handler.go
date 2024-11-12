@@ -8,10 +8,10 @@ import (
 )
 
 type ShortHandler struct {
-	svcShort *service.SvcShort
+	svcShort *service.SvcShortUrl
 }
 
-func NewShortHandler(svcShort *service.SvcShort) *ShortHandler {
+func NewShortHandler(svcShort *service.SvcShortUrl) *ShortHandler {
 	r := &ShortHandler{
 		svcShort: svcShort,
 	}

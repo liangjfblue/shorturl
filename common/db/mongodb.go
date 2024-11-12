@@ -47,8 +47,7 @@ func NewMgo(url, dbName string, mgoOptions ...MgoOption) *Mgo {
 	return m
 }
 
-// init mongodb
-func (m Mgo) initMgoSession(url string) (err error) {
+func (m *Mgo) initMgoSession(url string) (err error) {
 	defaultOptions := defaultMgoOptions
 	for _, opt := range m.mgoOptions {
 		opt(&defaultOptions)
@@ -146,4 +145,8 @@ func (m Mgo) Delete(ctx context.Context, tb string, filter map[string]any) (err 
 	}
 	_, err = m.getCollection(tb).DeleteMany(ctx, query)
 	return
+}
+
+func (m Mgo) Close() (err error) {
+	return m.client.Disconnect(context.Background())
 }

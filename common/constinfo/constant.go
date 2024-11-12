@@ -9,3 +9,8 @@ const (
 	TypeSystem = "system"
 	TypeCustom = "custom"
 )
+
+const (
+	KeyShortUrl   = "short:url:"  // 热门短链
+	KeyShortBloom = "short:bloom" // 短链集合, 用于快速判断短链是否存在
+)

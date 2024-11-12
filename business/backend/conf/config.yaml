@@ -1,0 +1,41 @@
+server:
+  env: dev # dev/prod
+  type: http # http/https
+  http:
+    port: 9090
+  https:
+    port:
+    certFile:
+    keyFile:
+log:
+  level: debug # debug/info/warn/fatal/panic
+  path: ./log/duanurl_business_backend
+  maxSize: 10
+  maxBackups: 7
+  maxAge: 7
+localCache:
+  memory: 30 # mb
+  expire: 180 # second
+redis:
+  type: single # single/sentinel/cluster
+  single:
+    host: 172.29.176.1:6379
+    password:
+  sentinel:
+    masterName:
+    hosts:
+      # - 127.0.0.1:63791
+      # - 127.0.0.1:63792
+      # - 127.0.0.1:63793
+    password:
+  cluster:
+    hosts:
+    password:
+database:
+  type: mysql # mongodb/mysql
+  sharding: 3 # 分表数
+  mysql:
+    host: root:123456@tcp(172.29.176.1:3306)/shorturl
+  mongodb:
+    host:
+    dbName:
